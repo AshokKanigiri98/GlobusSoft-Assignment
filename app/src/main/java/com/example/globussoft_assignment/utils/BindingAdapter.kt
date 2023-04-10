@@ -21,6 +21,6 @@ fun TextView.showSubmittedFeedbackTextContent(feedback: Feedback?){
     if(feedback == null){
         this.text = resources.getString(R.string.home_info_text)
     }else{
-        this.text = "Submitted Feedback \n\n Name : ${feedback.name} \n Email: ${feedback.email} \n Submitted Ratings: ${feedback.feedbackRating} \n Feedback : ${feedback.description}"
+        this.text = "Feedback Recorded successfully \n\n Name : ${feedback.name} \n Email: ${feedback.email} \n Submitted Ratings: ${feedback.feedbackRating} \n Feedback : ${feedback.description}"
     }
 }

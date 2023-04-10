@@ -41,6 +41,10 @@ class MainActivityViewModel @Inject constructor() : ViewModel() {
         }
     }
 
+    fun onDialogClosed(){
+        shouldShowRating.set(0)
+    }
+
     private fun validateInputs(feedback: Feedback): Boolean{
         return when{
             !feedback.email.isValidEmail() && feedback.name.trim().isEmpty() ->{
@@ -62,11 +66,7 @@ class MainActivityViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    fun onDialogClosed(){
-        shouldShowRating.set(0)
-    }
-
-    fun String.isValidEmail() : Boolean{
+    private fun String.isValidEmail() : Boolean{
        return Patterns.EMAIL_ADDRESS.matcher(this).matches()
     }
 }

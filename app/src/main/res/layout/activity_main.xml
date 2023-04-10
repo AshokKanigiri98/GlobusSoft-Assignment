@@ -35,6 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            style="@style/ratings_text_input_text_style"
             showSubmittedFeedbackTextContent="@{submittedFeedback}"
             android:lineSpacingMultiplier="1.4"
             app:layout_constraintBottom_toBottomOf="parent"
