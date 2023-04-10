@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
                     showPopup()
                 }
                 is MainActivityViewModelEvent.ShowFeedbackDialog -> {
+                    showFeedbackDialog()
                 }
             }
         })
@@ -56,6 +57,21 @@ class MainActivity : AppCompatActivity() {
         popup.inflate(R.menu.appbar_more_menu)
         popup.setOnMenuItemClickListener(onPopupMenuItemListener)
         popup.show()
+    }
+
+    private fun showFeedbackDialog() {
+        val binding = LayoutDialogFeedbackBinding.inflate(LayoutInflater.from(this))
+        val dialog = Dialog(this)
+        dialog.setContentView(binding.root)
+        binding.button.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.window?.setLayout(
+            WindowManager.LayoutParams.MATCH_PARENT,
+            WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        dialog.setCancelable(true)
+        dialog.show()
     }
 
 }
