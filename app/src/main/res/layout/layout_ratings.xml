@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.globussoft_assignment.MainActivityViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -9,8 +15,11 @@
 
         <ImageView
             android:id="@+id/iv_rating_3"
+            ratingNumber="@{3}"
+            shouldShowRating="@{viewModel.shouldShowRating}"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:onClick="@{()-> viewModel.onRatingsClicked(3)}"
             app:layout_constraintBottom_toBottomOf="@+id/iv_rating_2"
             app:layout_constraintEnd_toStartOf="@+id/iv_rating_4"
             app:layout_constraintHorizontal_bias="0.5"
@@ -20,8 +29,11 @@
 
         <ImageView
             android:id="@+id/iv_rating_1"
+            ratingNumber="@{1}"
+            shouldShowRating="@{viewModel.shouldShowRating}"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:onClick="@{()-> viewModel.onRatingsClicked(1)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/iv_rating_2"
             app:layout_constraintHorizontal_bias="0.5"
@@ -31,8 +43,11 @@
 
         <ImageView
             android:id="@+id/iv_rating_5"
+            ratingNumber="@{5}"
+            shouldShowRating="@{viewModel.shouldShowRating}"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:onClick="@{()-> viewModel.onRatingsClicked(5)}"
             app:layout_constraintBottom_toBottomOf="@+id/iv_rating_4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -42,8 +57,11 @@
 
         <ImageView
             android:id="@+id/iv_rating_2"
+            ratingNumber="@{2}"
+            shouldShowRating="@{viewModel.shouldShowRating}"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:onClick="@{()-> viewModel.onRatingsClicked(2)}"
             app:layout_constraintBottom_toBottomOf="@+id/iv_rating_1"
             app:layout_constraintEnd_toStartOf="@+id/iv_rating_3"
             app:layout_constraintHorizontal_bias="0.5"
@@ -53,8 +71,11 @@
 
         <ImageView
             android:id="@+id/iv_rating_4"
+            ratingNumber="@{4}"
+            shouldShowRating="@{viewModel.shouldShowRating}"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:onClick="@{()-> viewModel.onRatingsClicked(4)}"
             app:layout_constraintBottom_toBottomOf="@+id/iv_rating_3"
             app:layout_constraintEnd_toStartOf="@+id/iv_rating_5"
             app:layout_constraintHorizontal_bias="0.5"

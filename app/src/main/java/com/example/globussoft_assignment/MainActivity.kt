@@ -70,8 +70,10 @@ class MainActivity : AppCompatActivity() {
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.WRAP_CONTENT
         )
+        binding.viewModel = viewModel
         dialog.setCancelable(true)
         dialog.show()
     }
+
 
 }
