@@ -1,9 +1,11 @@
 package com.example.globussoft_assignment
 
+import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.example.globussoft_assignment.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -26,5 +28,14 @@ class MainActivityViewModel @Inject constructor() : ViewModel() {
 
     fun onRatingsClicked(ratingCount: Int) {
        shouldShowRating.set(ratingCount)
+    }
+
+    fun onSubmitFeedbackClicked(feedback: Feedback){
+        feedback.apply { feedbackRating = shouldShowRating.get()?:0 }
+        _event.postValue(MainActivityViewModelEvent.OnSubmitFeedBackClicked(feedback))
+    }
+
+    fun onDialogClosed(){
+        shouldShowRating.set(0)
     }
 }

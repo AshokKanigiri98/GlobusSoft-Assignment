@@ -7,6 +7,10 @@
         <variable
             name="viewModel"
             type="com.example.globussoft_assignment.MainActivityViewModel" />
+
+        <variable
+            name="feedback"
+            type="com.example.globussoft_assignment.Feedback" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -55,6 +59,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_name"
+                android:text="@={feedback.name}"
                 style="@style/ratings_text_input_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -73,6 +78,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_email"
+                android:text="@={feedback.email}"
                 style="@style/ratings_text_input_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -91,6 +97,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_description"
+                android:text="@={feedback.description}"
                 style="@style/ratings_text_input_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="180dp" />
@@ -104,6 +111,7 @@
             android:layout_margin="10dp"
             android:text="@string/submit_feedback"
             android:textAllCaps="false"
+            android:onClick="@{()-> viewModel.onSubmitFeedbackClicked(feedback)}"
             app:layout_constraintBottom_toTopOf="@id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

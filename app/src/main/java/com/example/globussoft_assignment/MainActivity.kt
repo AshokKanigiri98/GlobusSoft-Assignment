@@ -2,6 +2,7 @@ package com.example.globussoft_assignment
 
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -18,6 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by viewModels()
+    lateinit var feedbackDialog: Dialog
 
     lateinit var binding: ActivityMainBinding
 
@@ -48,6 +50,10 @@ class MainActivity : AppCompatActivity() {
                 is MainActivityViewModelEvent.ShowFeedbackDialog -> {
                     showFeedbackDialog()
                 }
+                is MainActivityViewModelEvent.OnSubmitFeedBackClicked ->{
+                    closeAndClearDialog()
+                    binding.submittedFeedback = it.feedback
+                }
             }
         })
     }
@@ -61,19 +67,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun showFeedbackDialog() {
         val binding = LayoutDialogFeedbackBinding.inflate(LayoutInflater.from(this))
-        val dialog = Dialog(this)
-        dialog.setContentView(binding.root)
-        binding.button.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialog.window?.setLayout(
+        feedbackDialog = Dialog(this)
+        feedbackDialog.setContentView(binding.root)
+        feedbackDialog.window?.setLayout(
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.WRAP_CONTENT
         )
         binding.viewModel = viewModel
-        dialog.setCancelable(true)
-        dialog.show()
+        binding.feedback = Feedback()
+        feedbackDialog.setCancelable(true)
+        feedbackDialog.show()
     }
 
-
+    private fun closeAndClearDialog(){
+        if(feedbackDialog.isShowing){
+            feedbackDialog.dismiss()
+            viewModel.onDialogClosed()
+        }
+    }
 }
