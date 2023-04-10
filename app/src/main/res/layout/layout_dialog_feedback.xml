@@ -11,6 +11,9 @@
         <variable
             name="feedback"
             type="com.example.globussoft_assignment.Feedback" />
+
+        <import type="android.view.View"/>
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -43,7 +46,7 @@
             android:layout_marginTop="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_header" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_error" />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -127,6 +130,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_end="20dp" />
+
+        <TextView
+            android:id="@+id/tv_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@{viewModel.validationErrorText}"
+            android:textColor="@color/red"
+            android:textSize="11sp"
+            android:visibility="@{viewModel.validationErrorText.empty || viewModel.validationErrorText == null ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/layout_ratings"
+            app:layout_constraintTop_toBottomOf="@+id/tv_header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
