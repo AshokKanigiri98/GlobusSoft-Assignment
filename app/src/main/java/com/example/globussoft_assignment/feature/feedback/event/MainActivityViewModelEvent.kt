@@ -1,4 +1,6 @@
-package com.example.globussoft_assignment
+package com.example.globussoft_assignment.feature.feedback.event
+
+import com.example.globussoft_assignment.feature.feedback.model.Feedback
 
 sealed class MainActivityViewModelEvent{
     object OnMoreButtonClicked: MainActivityViewModelEvent()

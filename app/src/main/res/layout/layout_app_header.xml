@@ -6,12 +6,12 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.globussoft_assignment.MainActivityViewModel" />
+            type="com.example.globussoft_assignment.feature.feedback.viewmodel.MainActivityViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".feature.feedback.view.MainActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/action_bar"

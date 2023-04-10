@@ -8,17 +8,17 @@
 
         <variable
             name="viewModel"
-            type="com.example.globussoft_assignment.MainActivityViewModel" />
+            type="com.example.globussoft_assignment.feature.feedback.viewmodel.MainActivityViewModel" />
 
         <variable
             name="submittedFeedback"
-            type="com.example.globussoft_assignment.Feedback" />
+            type="com.example.globussoft_assignment.feature.feedback.model.Feedback" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity">
+        tools:context=".feature.feedback.view.MainActivity">
 
         <include
             android:id="@+id/layout_header"

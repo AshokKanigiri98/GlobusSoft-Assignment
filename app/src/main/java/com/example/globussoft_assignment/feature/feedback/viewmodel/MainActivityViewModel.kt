@@ -1,13 +1,12 @@
-package com.example.globussoft_assignment
+package com.example.globussoft_assignment.feature.feedback.viewmodel
 
-import android.util.Log
 import android.util.Patterns
-import android.widget.TextView
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
+import com.example.globussoft_assignment.feature.feedback.model.Feedback
+import com.example.globussoft_assignment.feature.feedback.event.MainActivityViewModelEvent
 import com.example.globussoft_assignment.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
-import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel

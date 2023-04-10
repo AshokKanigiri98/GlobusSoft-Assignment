@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.globussoft_assignment.MainActivityViewModel" />
+            type="com.example.globussoft_assignment.feature.feedback.viewmodel.MainActivityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

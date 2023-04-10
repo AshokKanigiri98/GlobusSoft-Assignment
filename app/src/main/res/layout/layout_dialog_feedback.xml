@@ -6,11 +6,11 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.globussoft_assignment.MainActivityViewModel" />
+            type="com.example.globussoft_assignment.feature.feedback.viewmodel.MainActivityViewModel" />
 
         <variable
             name="feedback"
-            type="com.example.globussoft_assignment.Feedback" />
+            type="com.example.globussoft_assignment.feature.feedback.model.Feedback" />
 
         <import type="android.view.View"/>
 

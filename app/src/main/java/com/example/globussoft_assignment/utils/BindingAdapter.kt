@@ -3,7 +3,7 @@ package com.example.globussoft_assignment.utils
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.globussoft_assignment.Feedback
+import com.example.globussoft_assignment.feature.feedback.model.Feedback
 import com.example.globussoft_assignment.R
 
 

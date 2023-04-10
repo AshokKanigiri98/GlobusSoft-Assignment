@@ -1,8 +1,7 @@
-package com.example.globussoft_assignment
+package com.example.globussoft_assignment.feature.feedback.view
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.WindowManager
 import androidx.activity.viewModels
@@ -10,6 +9,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.example.globussoft_assignment.feature.feedback.model.Feedback
+import com.example.globussoft_assignment.feature.feedback.viewmodel.MainActivityViewModel
+import com.example.globussoft_assignment.feature.feedback.event.MainActivityViewModelEvent
+import com.example.globussoft_assignment.R
 import com.example.globussoft_assignment.databinding.ActivityMainBinding
 import com.example.globussoft_assignment.databinding.LayoutDialogFeedbackBinding
 import dagger.hilt.android.AndroidEntryPoint

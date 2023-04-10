@@ -1,4 +1,4 @@
-package com.example.globussoft_assignment
+package com.example.globussoft_assignment.feature.feedback.model
 
 data class Feedback(
     var id: String ="",
