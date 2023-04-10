@@ -18,4 +18,8 @@ class MainActivityViewModel @Inject  constructor() : ViewModel() {
     fun onMenuClicked(){
         _event.postValue(MainActivityViewModelEvent.OnMoreButtonClicked)
     }
+
+    fun showFeedbackDialog(){
+        _event.postValue(MainActivityViewModelEvent.ShowFeedbackDialog)
+    }
 }

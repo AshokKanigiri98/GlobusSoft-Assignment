@@ -1,16 +1,16 @@
 package com.example.globussoft_assignment
 
+import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.view.LayoutInflater
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.example.globussoft_assignment.databinding.ActivityMainBinding
+import com.example.globussoft_assignment.databinding.LayoutDialogFeedbackBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by viewModels()
 
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +29,11 @@ class MainActivity : AppCompatActivity() {
         observeViewModel()
     }
 
-    private val onPopupMenuItemListener = PopupMenu.OnMenuItemClickListener { menuItem->
+    private val onPopupMenuItemListener = PopupMenu.OnMenuItemClickListener { menuItem ->
 
-        when(menuItem.itemId){
-            R.id.record_feedback ->{
-
+        when (menuItem.itemId) {
+            R.id.record_feedback -> {
+                viewModel.showFeedbackDialog()
             }
         }
         false
@@ -41,20 +41,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeViewModel() {
         viewModel.event.observe(this, Observer {
-            when(it){
-                is MainActivityViewModelEvent.OnMoreButtonClicked ->{
+            when (it) {
+                is MainActivityViewModelEvent.OnMoreButtonClicked -> {
                     showPopup()
+                }
+                is MainActivityViewModelEvent.ShowFeedbackDialog -> {
                 }
             }
         })
     }
 
-    private fun showPopup(){
+    private fun showPopup() {
         val popup = PopupMenu(this, binding.layoutHeader.imageView)
         popup.inflate(R.menu.appbar_more_menu)
         popup.setOnMenuItemClickListener(onPopupMenuItemListener)
         popup.show()
     }
-
 
 }
