@@ -60,6 +60,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_name"
                 android:text="@={feedback.name}"
+                android:maxLines="1"
                 style="@style/ratings_text_input_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -79,6 +80,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_email"
                 android:text="@={feedback.email}"
+                android:maxLines="1"
                 style="@style/ratings_text_input_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -98,6 +100,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tv_description"
                 android:text="@={feedback.description}"
+                android:maxLines="6"
+                android:gravity="top|start"
                 style="@style/ratings_text_input_text_style"
                 android:layout_width="match_parent"
                 android:layout_height="180dp" />
