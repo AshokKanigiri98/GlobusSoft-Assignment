@@ -2,27 +2,24 @@ package com.example.globussoft_assignment.feature.feedback.view
 
 import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.PopupMenu
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
-import com.example.globussoft_assignment.feature.feedback.model.Feedback
-import com.example.globussoft_assignment.feature.feedback.viewmodel.MainActivityViewModel
-import com.example.globussoft_assignment.feature.feedback.event.MainActivityViewModelEvent
 import com.example.globussoft_assignment.R
 import com.example.globussoft_assignment.databinding.ActivityMainBinding
-import com.example.globussoft_assignment.databinding.LayoutDialogFeedbackBinding
+import com.example.globussoft_assignment.feature.feedback.event.MainActivityViewModelEvent
+import com.example.globussoft_assignment.feature.feedback.viewmodel.MainActivityViewModel
+import com.example.globussoft_assignment.utils.DialogUtils
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.ref.WeakReference
 
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by viewModels()
-    lateinit var feedbackDialog: Dialog
     lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,9 +47,13 @@ class MainActivity : AppCompatActivity() {
                     showPopup()
                 }
                 is MainActivityViewModelEvent.ShowFeedbackDialog -> {
-                    showFeedbackDialog()
+                    DialogUtils.shouldShowFeedbackDialog(
+                        context = WeakReference(this),
+                        viewModel = WeakReference(viewModel),
+                        shouldShowDialog = true
+                    )
                 }
-                is MainActivityViewModelEvent.OnSubmitFeedBackClicked ->{
+                is MainActivityViewModelEvent.OnSubmitFeedBackClicked -> {
                     closeAndClearDialog()
                     binding.submittedFeedback = it.feedback
                 }
@@ -67,24 +68,11 @@ class MainActivity : AppCompatActivity() {
         popup.show()
     }
 
-    private fun showFeedbackDialog() {
-        val binding = LayoutDialogFeedbackBinding.inflate(LayoutInflater.from(this))
-        feedbackDialog = Dialog(this)
-        feedbackDialog.setContentView(binding.root)
-        feedbackDialog.window?.setLayout(
-            WindowManager.LayoutParams.MATCH_PARENT,
-            WindowManager.LayoutParams.WRAP_CONTENT
-        )
-        binding.viewModel = viewModel
-        binding.feedback = Feedback()
-        feedbackDialog.setCancelable(true)
-        feedbackDialog.show()
-    }
 
-    private fun closeAndClearDialog(){
-        if(feedbackDialog.isShowing){
-            feedbackDialog.dismiss()
-            viewModel.onDialogClosed()
-        }
+    private fun closeAndClearDialog() {
+        DialogUtils.shouldShowFeedbackDialog(
+            shouldShowDialog = false,
+            viewModel = WeakReference(viewModel)
+        )
     }
 }
